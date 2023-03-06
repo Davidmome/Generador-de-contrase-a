@@ -2,27 +2,23 @@
 var generateBtn = document.querySelector("#generate");
 
 function randomInt(min, max){
-  if (!max){
-    max - min;
-    min = 0
-  }
   var numero = Math.random()
   return Math.floor (min*(1 - numero) + numero*max);
 }
 
 function getRandomItem(lista){
-  return lista[randomInt(lista.length)]
+  return lista[randomInt(0, lista.length -1)]
 }
 
 function generatePassword(){
   var input = window.prompt("De cuantos caracteres debe ser tu contraseña?");
-  var legnth = parseInt(input);
-  if (legnth < 8 || legnth > 128){
+  var length = parseInt(input);
+  if (length < 8 || length > 128){
     window.alert("La contraseña debe tener almenos entre 8-128 caracteres");
     return;
   }
 
-  if (isNaN(legnth)){
+  if (isNaN(length)){
     window.alert('Escribe un numero');
     return;
 
@@ -34,7 +30,7 @@ function generatePassword(){
   var mayusculas = window.confirm ('La contraseña debe de tener mayusculas?');
 
   var listadenumeros = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-  var listasimbolos = [ ' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '_', '^', '`', ];
+  var listasimbolos = [ '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '_', '^', '`', ];
   var listaminusculas = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
   var listamayusculas = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
   var listadeopciones = [];
@@ -54,7 +50,7 @@ function generatePassword(){
   if (mayusculas === true){
     listadeopciones.push(listamayusculas);
   }
-if (listadeopciones.legnth === 0){
+if (listadeopciones.length === 0){
   listadeopciones.push(listadenumeros);
 }
 
